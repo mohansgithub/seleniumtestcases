@@ -23,7 +23,7 @@ public class SauceDemoTests {
 	@BeforeClass
 	public void setup() {
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless=new");
+	//	options.addArguments("--headless=new");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--window-size=1920,1080");
 		driver = new ChromeDriver(options);
@@ -57,8 +57,8 @@ public class SauceDemoTests {
     	driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
     	driver.findElement(By.xpath("//div[@class='inventory_item_name' and @data-test='inventory-item-name']"));
     	try {
-    		//WebElement we = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='inventory_item_name' and @data-test='inventory-item-name']")));
-    	WebElement we = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Backpack']")));
+    	WebElement we = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='inventory_item_name' and @data-test='inventory-item-name']")));
+    	//WebElement we = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Backpack']")));
 
 			Assert.assertTrue(we.isDisplayed(),"Item added to cart");
     	}
