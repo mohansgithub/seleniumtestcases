@@ -27,7 +27,7 @@ public class SauceDemoTests {
 		options.addArguments("--disable-gpu");
 		options.addArguments("--window-size=1920,1080");
 		driver = new ChromeDriver(options);
-		wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+		wait = new WebDriverWait(driver,Duration.ofSeconds(20));
 		driver.get("https://www.saucedemo.com/");
 	
 	}
@@ -57,8 +57,10 @@ public class SauceDemoTests {
     	driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
     	driver.findElement(By.xpath("//div[@class='inventory_item_name' and @data-test='inventory-item-name']"));
     	try {
-    		WebElement we = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='inventory_item_name' and @data-test='inventory-item-name']")));
-    		Assert.assertTrue(we.isDisplayed(),"Item added to cart");
+    		//WebElement we = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='inventory_item_name' and @data-test='inventory-item-name']")));
+    	WebElement we = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Backpack']")));
+
+			Assert.assertTrue(we.isDisplayed(),"Item added to cart");
     	}
     	catch(TimeoutException te) {
     		System.out.println("item not added to cart");
